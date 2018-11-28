@@ -112,7 +112,7 @@ def seasonal_sen_slope(x, period=12, alpha=None):
 
     for season in np.arange(1, period):
         x_season = x[season::period]
-        s = np.append(s, sens_diff(x_season))
+        s = np.append(s, sen_diff(x_season))
 
     s.sort()
 
