@@ -53,6 +53,7 @@ def sen_diff(x):
     -------
     Sen difference
     """
+    x = x[~np.isnan(x)]
     n = len(x)
     N = int(n*(n-1)/2)  # number of slope estimates
     s = np.zeros(N)
@@ -108,9 +109,9 @@ def seasonal_sen_slope(x, period=12, alpha=None):
     period : int
         Number of observations in a cycle. The number of seasons. 
     """
-    s = sen_diff(x[0::period])
+    s = 0
 
-    for season in np.arange(1, period):
+    for season in np.arange(0, period):
         x_season = x[season::period]
         s = np.append(s, sen_diff(x_season))
 
@@ -203,6 +204,7 @@ def mk_score(x):
     -------
     MK trend statistic (S).
     """
+    x = x[~np.isnan(x)]
     n = len(x)
     s = 0
 
@@ -234,6 +236,7 @@ def mk_score_variance(x):
     ----------
     .. [1] Helsel and Hirsch, R.M. 2002. Statistical Methods in Water Resources.
     """
+    x = x[~np.isnan(x)]
     n = len(x)
     # calculate the unique data
     unique_x = np.unique(x)
