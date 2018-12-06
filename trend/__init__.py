@@ -53,13 +53,14 @@ def sen_diff(x):
     -------
     Sen difference
     """
-    x = x[~np.isnan(x)]
+    #x = x[~np.isnan(x)]
     n = len(x)
     N = int(n*(n-1)/2)  # number of slope estimates
     s = np.zeros(N)
     i = 0
     for j in np.arange(1, n):
-        s[i:j+i] = (x[j] - x[0:j])/np.arange(1, j+1)
+        #s[i:j+i] = (x[j] - x[0:j])/np.arange(1, j+1)
+        s[i:j+i] = (x[j] - x[0:j])/np.arange(j, 0, -1)
         i += j
 
     return s
