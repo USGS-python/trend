@@ -161,7 +161,7 @@ def pettitt(x, alpha=0.05):
 
     p = 2.0 * np.exp((-6.0 * K_t**2)/(n**3 + n**2))
 
-    if p > alpha:
+    if p < alpha:
         return t
     else:
         return np.nan
